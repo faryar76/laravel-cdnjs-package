@@ -15,7 +15,7 @@
     },"extra": {
         "laravel": {
             "providers": [
-                "Faryar\\Cdnjs\\CdnjsServiceProvider"
+                "Faryar\\Cdnjs\\Providers\\CdnjsServiceProvider"
             ],
             "aliases": {
                 "Cdnjs": "Faryar\\Cdnjs\\Facades\\Cdnjs"
