@@ -12,6 +12,15 @@
         "psr-4": {
             "Faryar\\Cdnjs\\":"src/"
         }
+    },"extra": {
+        "laravel": {
+            "providers": [
+                "Faryar\\Cdnjs\\CdnjsServiceProvider"
+            ],
+            "aliases": {
+                "Cdnjs": "Faryar\\Cdnjs\\Facades\\Cdnjs"
+            }
+        }
     },
     "minimum-stability": "dev",
     "require": {},
