@@ -1,0 +1,15 @@
+{
+    "name": "faryar/cdnjs",
+    "description": "this is for cdnjs",
+    "type": "laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "faryar",
+            "email": "faryar76@hotmil.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "prefer-stable": true
+}
