@@ -8,7 +8,11 @@
             "name": "faryar",
             "email": "faryar76@hotmil.com"
         }
-    ],
+    ],"autoload": {
+        "psr-4": {
+            "Faryar\\Cdnjs\\":"src/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {},
     "prefer-stable": true
