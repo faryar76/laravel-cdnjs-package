@@ -95,8 +95,8 @@ class Library
         {
             $myfile = fopen(storage_path('cdnjs_lib.json'), "w");
             fwrite($myfile, '{
-                "css": ["framework", "laravel"],
-                "js": ["framework", "laravel"]
+                "css": {},
+                "js": {}
             }');
             fclose($myfile);
             @chmod(storage_path('cdnjs_lib.json'), 0777); 
