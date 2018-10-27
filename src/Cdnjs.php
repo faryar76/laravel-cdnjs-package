@@ -1,35 +1,84 @@
 <?php 
 namespace Faryar\Cdnjs;
 use Faryar\Cdnjs\Basic\Library;
+use Faryar\Cdnjs\Basic\FileReader as File;
 
 class Cdnjs 
 {
     /**
-     * constructor
+     * instans of Library class 
      *
-     * @param Library $downloader
+     * @var object
+     */
+    protected $library;
+    /**
+     * instans of FileReader class 
+     *
+     * @var object
+     */
+    protected $file;
+
+    /**
+     * construct
      */
     public function __construct()
     {
+        $this->library=new Library();
+        $this->file=new File();
     }
-
+    /**
+     * requre directive to provider
+     *
+     * @return void
+     */
     public function directive()
     {
         require(__DIR__."/directive.php"); 
     }
-    public function test($string)
+    /**
+     * handle genarate
+     *
+     * @param [type] $name
+     * @param [type] $version
+     * @return void
+     */
+    public function generate($input,$version=null)
     {
-        $Library=new Library($string);
-        if($file=$Library->exists($string))
+        if(is_array($input))
         {
-            return  $file;  
+            $results="";
+            foreach($input as $item)
+            {
+                $results.=$this->get($item);
+            }
+            return $results;
         }
+        return $this->get($input);
 
-        if($packageName=$Library->findPackageName())
+    }
+    /**
+     * get links from Library class 
+     *
+     * @param string $name
+     * @return void
+     */
+    public function get(string $name)
+    {
+        $results="";
+        if($name=="")
         {
-            
-            return  $Library->getpackagePage()->get();  
+           return $this->library->notFound("' no name '");
         }
-        return $Library->notFound();
+        if($link=$this->file->open()->exists($name))
+        {
+            $results=$link;
+        }elseif($this->library->findRealPackageName($name))
+        {
+            $results=$this->library->get($name);
+
+        }else{
+            $results= $this->library->notFound($name);
+        }
+        return $results;
     }
 }

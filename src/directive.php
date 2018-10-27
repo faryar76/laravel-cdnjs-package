@@ -1,5 +1,5 @@
 <?php 
 
-Blade::directive('cdnjs', function ($expression) {
-    return "<?php echo \Cdnjs::test($expression); ?>";
+Blade::directive('cdnjs', function ($packageName) {
+    return "<?php echo \Cdnjs::generate($packageName); ?>";
 });
