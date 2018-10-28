@@ -8,8 +8,8 @@ fast and cleaner laravel programming.
  [cdnjs.com](https://cdnjs.com) and save library link in storage for next time 
  <br />
  in the other words just in first time package will request to cdnjs for check package exists and get link
-## installation
-#### no need config anything just install with
+## installation 
+#### no need config anything  install latest version with
 ```
 composer require faryar/cdnjs
 
