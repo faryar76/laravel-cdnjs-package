@@ -1,7 +1,7 @@
 <?php 
 namespace Faryar\Cdnjs\Basic;
 
-class FileReader 
+class FileReader
 {
     /**
      * path of cdnjs_lib 
@@ -21,9 +21,9 @@ class FileReader
      *
      * @param [type] $path
      */
-    function __construct($path=null)
+    function __construct($path = null)
     {
-        $this->path=is_null($path) ?  storage_path('cdnjs_lib.json') : $path ;
+        $this->path = is_null($path) ? storage_path('cdnjs_lib.json') : $path;
     }
     /**
      * read $path file if exists and create if not
@@ -31,10 +31,10 @@ class FileReader
      * @param [type] $path
      * @return void
      */
-    public function open($path=Null)
+    public function open($path = null)
     {
         $this->fileExists($this->path) ? null : $this->create();
-        $this->file=json_decode(file_get_contents($this->path));
+        $this->file = json_decode(file_get_contents($this->path));
         return $this;
     }
     /**
@@ -53,9 +53,9 @@ class FileReader
      * @param string $name
      * @return void
      */
-    public function create($name='cdnjs_lib.json')
+    public function create($name = 'cdnjs_lib.json')
     {
-       return touch(storage_path($name));
+        return touch(storage_path($name));
     }
     /**
      * check record exists in $path
@@ -65,14 +65,12 @@ class FileReader
      */
     public function exists(string $name)
     {
-        if(! is_null($this->file))
-        {
-            foreach($this->file as $key => $link)
-            {
-                if($key==$name)
-                {
-                    return $link;
-                }
+        if (is_null($this->file)) {
+            return false;
+        }
+        foreach ($this->file as $key => $link) {
+            if ($key == $name) {
+                return $link;
             }
         }
         return false;

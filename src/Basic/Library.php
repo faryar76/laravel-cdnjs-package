@@ -21,7 +21,7 @@ class Library
      */
     public function __construct()
     {
-        $this->path=storage_path('cdnjs_lib.json');
+        $this->path = storage_path('cdnjs_lib.json');
     }
     /**
      * initialize function
@@ -31,9 +31,9 @@ class Library
      */
     public function init($name)
     {
-        $extension=explode('.',$name);
-        $this->extension=end($extension);
-        $this->userRequestName=$extension[0];
+        $extension = explode('.', $name);
+        $this->extension = end($extension);
+        $this->userRequestName = $extension[0];
     }
     /**
      * get real package name from cdnjs ex "twitter-bootstrap"
@@ -44,9 +44,9 @@ class Library
     public function findRealPackageName($name)
     {
         $this->init($name);
-        $data=json_decode(file_get_contents('https://api.cdnjs.com/libraries?search='.$this->userRequestName),TRUE);
-        if($data['total'] > 0){
-            $this->RealPackageName=$data['results'][0]['name'];
+        $data = json_decode(file_get_contents('https://api.cdnjs.com/libraries?search=' . $this->userRequestName), true);
+        if ($data['total'] > 0) {
+            $this->RealPackageName = $data['results'][0]['name'];
             return $this;
         }
         return false;
@@ -59,36 +59,45 @@ class Library
      */
     public function get(string $name)
     {
-        $loadedLib=$this->loadLib($name);
-        if($loadedLib==null)
-            {
-                return $this->notFound($name);
-            }
-      
-            foreach($loadedLib['assets'][0]['files'] as $item)
-            {
-                if(strpos($item,$name)!==false)
-                {
-                    // $filename=$loadedLib['filename'];
-                    $filename=$item;
-                    $pname=$loadedLib['name'];
-                    $version=$loadedLib['version'];
+        $loadedLib = $this->loadLib($name);
+        if ($loadedLib == null) {
+            return $this->notFound($name);
+        }
 
-                    $extension=explode('.',$filename);
-                    $extension=end($extension);
-
-                    if($extension=='css')
-                    {
-                        $this->addToStorage($name,"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'/>");
-                        return  "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'/>";
-                    }elseif($extension=='js'){
-                        $this->addToStorage($name,"<script src='"."https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'></script>");
-                        return  "<script src='"."https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'></script>";         
-                    }
-                }
+        foreach ($loadedLib['assets'][0]['files'] as $item) {
+            if (strpos($item, $name) !== false) {
+               return $this->generateFinalHtmlTag($item,$loadedLib,$name);
             }
-       
-       return $this->notFound($name);//if not found results
+        }
+
+        return $this->notFound($name);//if not found results
+    }
+    /**
+     * generate final html tag 
+     *
+     * @param array $item
+     * @param array $loadedLib
+     * @param string $name
+     * @return void
+     */
+    public function generateFinalHtmlTag($item,$loadedLib,$name)
+    {
+        $filename = $item;
+        $pname = $loadedLib['name'];
+        $version = $loadedLib['version'];
+
+        $extension = explode('.', $filename);
+        $extension = end($extension);
+
+        if ($extension == 'css') {
+            $this->addToStorage($name, "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'/>");
+            return "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'/>";
+        } elseif ($extension == 'js') {
+            $this->addToStorage($name, "<script src='" . "https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'></script>");
+            return "<script src='" . "https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'></script>";
+        }
+        return $this->notFound($name);//if not found results
+
     }
     /**
      * load page of curent library
@@ -98,8 +107,8 @@ class Library
      */
     public function loadLib($packageName)
     {
-        $packageName=$this->RealPackageName;
-        return json_decode(file_get_contents('https://api.cdnjs.com/libraries/'.$packageName),TRUE);
+        $packageName = $this->RealPackageName;
+        return json_decode(file_get_contents('https://api.cdnjs.com/libraries/' . $packageName), true);
     }
     /**
      * if library not found will return a console.error for user 
@@ -109,11 +118,11 @@ class Library
      */
     public function notFound($name)
     {
-        if(true)//check for dev mod
+        if (true)//check for dev mod
         {
             return '
             <script id="mustHide">
-            console.error("your package '.$name.' not found check cdnjs sites for curect name \nyou can disable this message with disable dev mod from config")
+            console.error("your package ' . $name . ' not found check cdnjs sites for curect name \nyou can disable this message with disable dev mod from config")
             document.getElementById("mustHide").remove();
             </script>
             ';
@@ -126,14 +135,14 @@ class Library
      * @param [type] $link
      * @return void
      */
-    public function addToStorage($name,$link)
+    public function addToStorage($name, $link)
     {
-        $data=json_decode(file_get_contents($this->path),TRUE);
-        $data[$name]=$link;
+        $data = json_decode(file_get_contents($this->path), true);
+        $data[$name] = $link;
         $myfile = fopen($this->path, "w");
         fwrite($myfile, json_encode($data));
         fclose($myfile);
-        return ;
+        return;
     }
 }
 
