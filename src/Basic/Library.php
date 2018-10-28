@@ -49,9 +49,10 @@ class Library
     public function findRealPackageName($name)
     {
         $this->init($name);
-        $data = json_decode(file_get_contents('https://api.cdnjs.com/libraries?search=' . $this->userRequestName), true);
+        $data = json_decode(file_get_contents('https://api.cdnjs.com/libraries?search='.$this->userRequestName), true);
         if ($data['total'] > 0) {
             $this->RealPackageName = $data['results'][0]['name'];
+
             return $this;
         }
 
@@ -74,21 +75,23 @@ class Library
 
         foreach ($loadedLib['assets'][0]['files'] as $item) {
             if (strpos($item, $name) !== false) {
-               return $this->generateFinalHtmlTag($item,$loadedLib,$name);
+                return $this->generateFinalHtmlTag($item, $loadedLib, $name);
             }
         }
 
-        return $this->notFound($name);//if not found results
+        return $this->notFound($name); //if not found results
     }
+
     /**
-     * generate final html tag 
+     * generate final html tag.
      *
-     * @param array $item
-     * @param array $loadedLib
+     * @param array  $item
+     * @param array  $loadedLib
      * @param string $name
+     *
      * @return void
      */
-    public function generateFinalHtmlTag($item,$loadedLib,$name)
+    public function generateFinalHtmlTag($item, $loadedLib, $name)
     {
         $filename = $item;
         $pname = $loadedLib['name'];
@@ -98,14 +101,16 @@ class Library
         $extension = end($extension);
 
         if ($extension == 'css') {
-            $this->addToStorage($name, "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'/>");
-            return "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'/>";
-        } elseif ($extension == 'js') {
-            $this->addToStorage($name, "<script src='" . "https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'></script>");
-            return "<script src='" . "https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/" . $filename . "'></script>";
-        }
-        return $this->notFound($name);//if not found results
+            $this->addToStorage($name, "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'/>");
 
+            return "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'/>";
+        } elseif ($extension == 'js') {
+            $this->addToStorage($name, "<script src='"."https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'></script>");
+
+            return "<script src='"."https://cdnjs.cloudflare.com/ajax/libs/{$pname}/{$version}/".$filename."'></script>";
+        }
+
+        return $this->notFound($name); //if not found results
     }
 
     /**
@@ -118,7 +123,8 @@ class Library
     public function loadLib($packageName)
     {
         $packageName = $this->RealPackageName;
-        return json_decode(file_get_contents('https://api.cdnjs.com/libraries/' . $packageName), true);
+
+        return json_decode(file_get_contents('https://api.cdnjs.com/libraries/'.$packageName), true);
     }
 
     /**
@@ -131,11 +137,10 @@ class Library
      */
     public function notFound($name)
     {
-        if (true)//check for dev mod
-        {
+        if (true) {//check for dev mod
             return '
             <script id="mustHide">
-            console.error("your package ' . $name . ' not found check cdnjs sites for curect name \nyou can disable this message with disable dev mod from config")
+            console.error("your package '.$name.' not found check cdnjs sites for curect name \nyou can disable this message with disable dev mod from config")
             document.getElementById("mustHide").remove();
             </script>
             ';
@@ -154,9 +159,8 @@ class Library
     {
         $data = json_decode(file_get_contents($this->path), true);
         $data[$name] = $link;
-        $myfile = fopen($this->path, "w");
+        $myfile = fopen($this->path, 'w');
         fwrite($myfile, json_encode($data));
         fclose($myfile);
-        return;
     }
 }

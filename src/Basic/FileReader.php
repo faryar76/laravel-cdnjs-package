@@ -22,7 +22,7 @@ class FileReader
      *
      * @param [type] $path
      */
-    function __construct($path = null)
+    public function __construct($path = null)
     {
         $this->path = is_null($path) ? storage_path('cdnjs_lib.json') : $path;
     }
@@ -38,6 +38,7 @@ class FileReader
     {
         $this->fileExists($this->path) ? null : $this->create();
         $this->file = json_decode(file_get_contents($this->path));
+
         return $this;
     }
 

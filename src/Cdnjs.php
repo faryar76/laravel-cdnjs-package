@@ -2,8 +2,8 @@
 
 namespace Faryar\Cdnjs;
 
-use Faryar\Cdnjs\Basic\Library;
 use Faryar\Cdnjs\Basic\FileReader as File;
+use Faryar\Cdnjs\Basic\Library;
 
 class Cdnjs
 {
@@ -36,7 +36,7 @@ class Cdnjs
      */
     public function directive()
     {
-        require(__DIR__ . "/directive.php");
+        require __DIR__.'/directive.php';
     }
 
     /**
@@ -49,13 +49,14 @@ class Cdnjs
      */
     public function generate($input, $version = null)
     {
-        $results = "";
+        $results = '';
         if (!is_array($input)) {
             return $this->get($input);
         }
         foreach ($input as $item) {
             $results .= $this->get($item);
         }
+
         return $results;
 
         return $this->get($input);
@@ -70,8 +71,8 @@ class Cdnjs
      */
     public function get(string $name)
     {
-        $results = "";
-        if ($name == "") {
+        $results = '';
+        if ($name == '') {
             return $this->library->notFound("' no name '");
         }
         if ($link = $this->file->open()->exists($name)) {
