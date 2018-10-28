@@ -1,7 +1,7 @@
 # laravel-cdnjs-package
 ![logo](https://github.com/faryar76/laravel-cdnjs-package/blob/master/simple.png)
 
-[![Daily Downloads](https://poser.pugx.org/faryar76/laravel-cdnjs-package/d/daily)](https://packagist.org/packages/faryar/laravel-cdnjs-package)
+[![Daily Downloads](https://poser.pugx.org/faryar76/laravel-cdnjs-package/d/daily)](https://packagist.org/packages/faryar/cdnjs)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=round-square)](LICENSE.md)
 
 
