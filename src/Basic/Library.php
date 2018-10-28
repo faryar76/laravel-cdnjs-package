@@ -1,32 +1,35 @@
 <?php
+
 namespace Faryar\Cdnjs\Basic;
 
 class Library
 {
     /**
-     * extension of user requested name
+     * extension of user requested name.
      *
      * @var string
      */
     public $extension;
     /**
-     * real name of user requested library
+     * real name of user requested library.
      *
      * @var string
      */
     public $RealPackageName;
 
     /**
-     * library constructor
+     * library constructor.
      */
     public function __construct()
     {
         $this->path = storage_path('cdnjs_lib.json');
     }
+
     /**
-     * initialize function
+     * initialize function.
      *
      * @param [type] $name
+     *
      * @return void
      */
     public function init($name)
@@ -35,10 +38,12 @@ class Library
         $this->extension = end($extension);
         $this->userRequestName = $extension[0];
     }
+
     /**
-     * get real package name from cdnjs ex "twitter-bootstrap"
+     * get real package name from cdnjs ex "twitter-bootstrap".
      *
      * @param string $name
+     *
      * @return void
      */
     public function findRealPackageName($name)
@@ -49,12 +54,15 @@ class Library
             $this->RealPackageName = $data['results'][0]['name'];
             return $this;
         }
+
         return false;
     }
+
     /**
-     * get generated link for js or css 
+     * get generated link for js or css.
      *
      * @param string $name
+     *
      * @return void
      */
     public function get(string $name)
@@ -99,10 +107,12 @@ class Library
         return $this->notFound($name);//if not found results
 
     }
+
     /**
-     * load page of curent library
+     * load page of curent library.
      *
      * @param [type] $packageName
+     *
      * @return void
      */
     public function loadLib($packageName)
@@ -110,10 +120,13 @@ class Library
         $packageName = $this->RealPackageName;
         return json_decode(file_get_contents('https://api.cdnjs.com/libraries/' . $packageName), true);
     }
+
     /**
-     * if library not found will return a console.error for user 
-     * can disable it in config
+     * if library not found will return a console.error for user
+     * can disable it in config.
+     *
      * @param [type] $name
+     *
      * @return void
      */
     public function notFound($name)
@@ -128,11 +141,13 @@ class Library
             ';
         }
     }
+
     /**
-     * add new library to $path for later use
+     * add new library to $path for later use.
      *
      * @param [type] $name
      * @param [type] $link
+     *
      * @return void
      */
     public function addToStorage($name, $link)
@@ -145,4 +160,3 @@ class Library
         return;
     }
 }
-

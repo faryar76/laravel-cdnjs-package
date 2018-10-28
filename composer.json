@@ -2,6 +2,17 @@
     "name": "faryar/cdnjs",
     "description": "this is for cdnjs",
     "type": "laravel",
+     "keywords": [
+        "laravel",
+        "blade",
+        "cdn",
+        "cdnjs",
+        "directive",
+        "asset",
+        "url",
+        "css",
+        "js"
+    ],
     "license": "MIT",
     "authors": [
         {
