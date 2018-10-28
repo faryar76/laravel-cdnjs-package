@@ -15,7 +15,7 @@ composer require faryar/cdnjs
 
 ```
 ## usage
-###in blade file 
+### in blade file 
 ```
 @cdnjs('library_name')
 @cdnjs('bootstrap.css')
@@ -25,11 +25,11 @@ or use array
 @cdnjs(['jquery.min.js','bootstrap.css','select2.js,'vue.js'])
 ```
 
-__output for js
+####output for js
 ```
 <script src="library address"></script>
 ```
-__output for css
+####output for css
 ```
  <link rel="stylesheet" href="library address" />
 ````
