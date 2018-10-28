@@ -14,9 +14,30 @@ fast and cleaner laravel programming.
 composer require faryar/cdnjs
 
 ```
+## usage
+###in blade file 
+```
+@cdnjs('library_name')
+@cdnjs('bootstrap.css')
+@cdnjs('jquery.js')
+@cdnjs('jquery.min.js')
+or use array
+@cdnjs(['jquery.min.js','bootstrap.css','select2.js,'vue.js'])
+```
+
+__output for js
+```
+<script src="library address"></script>
+```
+__output for css
+```
+ <link rel="stylesheet" href="library address" />
+````
+
 TODO
 - [x] support auto laod to laravel provider 
 - [x] array support
+- [ ] detect local libraries
 - [ ] create new config file
 - [ ] select version of library
 - [ ] download libraries offline of library
