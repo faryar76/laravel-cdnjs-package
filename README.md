@@ -3,7 +3,9 @@
 
 __[laravel faryar/cdnjs ](https://packagist.org/packages/faryar/cdnjs)__ package is a laravel blade package for 
 fast and cleaner laravel developing.
-
+## Description
+ by using this package your app will get libraries from [cdnjs.com](https://cdnjs.com) and save library link in storage for next time 
+ in the other words just in first time package will request to cdnjs for package exists 
 ## installation
 ### install with
 ```
