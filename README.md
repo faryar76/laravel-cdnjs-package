@@ -9,7 +9,7 @@ fast and cleaner laravel programming.
  <br />
  in the other words just in first time package will request to cdnjs for check package exists and get link
 ## installation
-### install with
+#### no need config anything just install with
 ```
 composer require faryar/cdnjs
 
