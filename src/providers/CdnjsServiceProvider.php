@@ -2,8 +2,9 @@
 
 namespace Faryar\Cdnjs\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Faryar\Cdnjs\Cdnjs as facadee;
+use Illuminate\Support\ServiceProvider;
+
 class CdnjsServiceProvider extends ServiceProvider
 {
     /**
@@ -13,10 +14,10 @@ class CdnjsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind('cdnjs-facade',function(){
+        $this->app->bind('cdnjs-facade', function () {
             return new facadee();
-        });  
-         \Cdnjs::directive();
+        });
+        \Cdnjs::directive();
     }
 
     /**
