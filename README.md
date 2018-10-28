@@ -13,6 +13,6 @@ composer require faryar/cdnjs
 TODO
 [x] support auto laod to laravel provider 
 [x] array support
-[] create new config file
-[] select version of library
-[] download libraries offline of library
+[ ] create new config file
+[ ] select version of library
+[ ] download libraries offline of library
