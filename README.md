@@ -25,11 +25,11 @@ or use array
 @cdnjs(['jquery.min.js','bootstrap.css','select2.js,'vue.js'])
 ```
 
-####output for js
+#### output for js
 ```
 <script src="library address"></script>
 ```
-####output for css
+#### output for css
 ```
  <link rel="stylesheet" href="library address" />
 ````
