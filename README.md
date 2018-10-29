@@ -4,6 +4,7 @@
 [![Daily Downloads](https://poser.pugx.org/faryar76/laravel-cdnjs-package/d/daily)](https://packagist.org/packages/faryar/cdnjs)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=round-square)](LICENSE.md)
 [![StyleCI](https://github.styleci.io/repos/154979609/shield?branch=master)](https://github.styleci.io/repos/154979609)
+[![Code Coverage](https://scrutinizer-ci.com/g/imanghafoori1/laravel-heyman/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/imanghafoori1/laravel-heyman/?branch=master)
 
 
 __[laravel faryar/cdnjs ](https://packagist.org/packages/faryar/cdnjs)__ is a laravel blade package for 
