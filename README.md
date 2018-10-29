@@ -1,5 +1,6 @@
 # laravel-cdnjs-package
 ![logo](https://github.com/faryar76/laravel-cdnjs-package/blob/master/simple.png)
+
 [![Latest Stable Version](https://poser.pugx.org/faryar/cdnjs/v/stable)](https://packagist.org/packages/faryar/cdnjs)
 [![Total Downloads](https://poser.pugx.org/faryar/cdnjs/downloads)](https://packagist.org/packages/faryar/cdnjs)
 [![Latest Unstable Version](https://poser.pugx.org/faryar/cdnjs/v/unstable)](https://packagist.org/packages/faryar/cdnjs)
