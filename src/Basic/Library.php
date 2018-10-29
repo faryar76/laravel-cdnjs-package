@@ -49,7 +49,12 @@ class Library
     public function findRealPackageName($name)
     {
         $this->init($name);
-        $data = json_decode(file_get_contents('https://api.cdnjs.com/libraries?search='.$this->userRequestName), true);
+        $file=@file_get_contents('https://api.cdnjs.com/libraries?search='.$this->userRequestName);
+        if($file===false)
+        {
+            return false;
+        }
+        $data = json_decode($file, true);
         if ($data['total'] > 0) {
             $this->RealPackageName = $data['results'][0]['name'];
 
