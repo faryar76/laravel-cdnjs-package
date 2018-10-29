@@ -50,7 +50,7 @@ class Library
     {
         $this->init($name);
         $file = @file_get_contents('https://api.cdnjs.com/libraries?search='.$this->userRequestName);
-+        if($file === false) {
+        if($file === false) {
             return false;
         }
         $data = json_decode($file, true);
