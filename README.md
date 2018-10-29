@@ -1,7 +1,8 @@
 # laravel-cdnjs-package
 ![logo](https://github.com/faryar76/laravel-cdnjs-package/blob/master/simple.png)
-
-[![Daily Downloads](https://poser.pugx.org/faryar76/laravel-cdnjs-package/d/daily)](https://packagist.org/packages/faryar/cdnjs)
+[![Latest Stable Version](https://poser.pugx.org/faryar/cdnjs/v/stable)](https://packagist.org/packages/faryar/cdnjs)
+[![Total Downloads](https://poser.pugx.org/faryar/cdnjs/downloads)](https://packagist.org/packages/faryar/cdnjs)
+[![Latest Unstable Version](https://poser.pugx.org/faryar/cdnjs/v/unstable)](https://packagist.org/packages/faryar/cdnjs)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=round-square)](LICENSE.md)
 [![StyleCI](https://github.styleci.io/repos/154979609/shield?branch=master)](https://github.styleci.io/repos/154979609)
 [![Code Coverage](https://scrutinizer-ci.com/g/imanghafoori1/laravel-heyman/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/imanghafoori1/laravel-heyman/?branch=master)
